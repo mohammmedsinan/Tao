@@ -9,6 +9,17 @@ const isElectron = () => typeof window !== 'undefined' && !!window.electronAPI
 
 export const projectService = {
     /**
+     * Select a folder using the system dialog
+     */
+    async selectFolder(): Promise<string | null> {
+        if (!isElectron()) {
+            console.log('[projectService] Browser mode: selectFolder returning null')
+            return null
+        }
+        return window.electronAPI.openFolder()
+    },
+
+    /**
      * Validate if a folder contains a valid Tao project
      */
     async validate(projectPath: string): Promise<{ valid: boolean; config: TaoProjectConfig | null }> {

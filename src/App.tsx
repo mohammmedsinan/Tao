@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useProjectStore } from '@/stores/projectStore'
-import Welcome from '@/pages/Welcome'
-import Dashboard from '@/pages/Dashboard'
+import { WelcomePage } from '@/features/welcome'
+import { DashboardPage } from '@/features/dashboard'
 import { TalksPage } from '@/features/talks'
-import TaoMotions from '@/pages/TaoMotions'
+import { MotionsPage } from '@/features/motions'
 import CRTOverlay from '@/components/layout/CRTOverlay'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                 <Route
                     path="/"
                     element={
-                        isProjectLoaded ? <Navigate to="/dashboard" replace /> : <Welcome />
+                        isProjectLoaded ? <Navigate to="/dashboard" replace /> : <WelcomePage />
                     }
                 />
 
@@ -28,7 +28,7 @@ function App() {
                 <Route
                     path="/dashboard"
                     element={
-                        isProjectLoaded ? <Dashboard /> : <Navigate to="/" replace />
+                        isProjectLoaded ? <DashboardPage /> : <Navigate to="/" replace />
                     }
                 />
                 <Route
@@ -40,7 +40,7 @@ function App() {
                 <Route
                     path="/motions"
                     element={
-                        isProjectLoaded ? <TaoMotions /> : <Navigate to="/" replace />
+                        isProjectLoaded ? <MotionsPage /> : <Navigate to="/" replace />
                     }
                 />
 
