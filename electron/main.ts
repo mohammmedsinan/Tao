@@ -25,6 +25,9 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL ? path.join(process.env.APP_ROOT, 
 
 let win: BrowserWindow | null
 
+const preloadPath = path.join(__dirname, 'preload.js');
+console.log('🔥 Using preload:', preloadPath);
+
 function createWindow() {
     win = new BrowserWindow({
         width: 1400,
@@ -40,7 +43,7 @@ function createWindow() {
             height: 40
         },
         webPreferences: {
-            preload: path.join(__dirname, 'preload.mjs'),
+            preload: preloadPath,
             nodeIntegration: false,
             contextIsolation: true,
         },
